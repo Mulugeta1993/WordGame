@@ -1,19 +1,19 @@
 import java.util.Random;
 
 public class Numbers {
-    private int randomNum;
+    private static int randomNumber;
 
     public int getRandomNum() {
-        return randomNum;
+        return getRandomNum();
     }
 
     public void setRandomNum(int randomNum) {
-        this.randomNum = randomNum;
+        Numbers.randomNumber = randomNum;
     }
 
-    public void generateNumber() {
+    public static int generateNumber() {
         Random rand = new Random();
-        randomNum = rand.nextInt(101);
+        return randomNumber = rand.nextInt(101);
     }
 
     public boolean compareNumber(int guess) {
