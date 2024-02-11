@@ -10,12 +10,11 @@ public class GamePlay {
 
     GamePlay game = new GamePlay();
 
-    Hosts host = new Hosts("Iron Man","");
+    Hosts host = new Hosts("Iron Man");
 
     host.randomizeNum();
 
     Turn turn = new Turn();
-
     for (int i = 0; i < game.currentPlayers.length; i++) {
       System.out.print("Enter your name: ");
       String name = input.nextLine();
