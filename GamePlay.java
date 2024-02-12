@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class GamePlay {
-  
+
   private Players[] currentPlayers = new Players[3];
 
   public static void main(String[] args) {
