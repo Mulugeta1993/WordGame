@@ -1,27 +1,18 @@
-class Turn {
-    private Money money = new Money();
-    private Physical physical = new Physical();
-  
-    public boolean takeTurn(Players player, Hosts host) {
-      System.out.print(player.getName() + ", please enter your guess: ");
-      Scanner input = new Scanner(System.in);
-      int guess = input.nextInt();
-  
-      boolean correctGuess = host.checkGuess(guess);
-      int winnings = 0;
-  
-      System.out.println("Enter 1 for Money or 2 for Physical Prize: ");
-      int choice = input.nextInt();
-      if (choice == 1) {
-        winnings = money.displayWinnings(player, correctGuess);
-      } else if (choice == 2) {
-        winnings = physical.displayWinnings(player, correctGuess);
-      }
-  
-      player.addMoney(winnings);
-      System.out.println(player.getName() + " now has " + player.getMoney() + "$");
-  
-      return correctGuess;
+public class Turn {
+  public void evaluateGuess(phrase, char guess) {
+    try {
+      boolean isLetterInPhrase = phrase.findLetters(guess);
+      // Logic to handle correct/incorrect guesses
+    } catch (MultipleLettersException e) {
+      System.out.println(e.getMessage());
+      // Handle the case when the user enters multiple letters
+    } catch (Exception e) {
+      System.out.println("Invalid input. Please enter a single letter.");
+      // Handle other unexpected input scenarios
     }
   }
-  
+
+  public boolean takeTurn(Players players, Hosts host) {
+    throw new UnsupportedOperationException("Unimplemented method 'takeTurn'");
+  }
+}
