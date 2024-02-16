@@ -1,22 +1,27 @@
 import java.util.Random;
 
+interface Award {
+  void displayWinnings(boolean hasWon, String playerName);
+}
+
 class Physical implements Award {
-  private String[] physicalPrizes = { "Television", "Laptop", "Smartphone", "Tablet", "Game Console" };
+  private String[] physicalPrizes = { "Car", "Vacation Package", "Smartphone", "Kitchen Appliances",
+      "Fitness Equipment" };
 
   public int getRandomPrize() {
     Random random = new Random();
     return random.nextInt(physicalPrizes.length);
   }
 
-  public int displayWinnings(Players player, boolean correctGuess) {
-    if (correctGuess) {
-      int prizeIndex = getRandomPrize();
-      System.out.println(player.getName() + " won " + physicalPrizes[prizeIndex]);
-      return 0;
+  @Override
+  public void displayWinnings(boolean hasWon, String playerName) {
+    int prizeIndex = getRandomPrize();
+    if (hasWon) {
+      System.out.println(playerName + " has won!");
+      System.out.println("Congratulations! You have won a " + physicalPrizes[prizeIndex]);
     } else {
-      int prizeIndex = getRandomPrize();
-      System.out.println(player.getName() + " could have won " + physicalPrizes[prizeIndex]);
-      return 0;
+      System.out.println(playerName + " has lost.");
+      System.out.println("You could have won a " + physicalPrizes[prizeIndex]);
     }
   }
 }

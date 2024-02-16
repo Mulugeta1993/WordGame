@@ -5,6 +5,13 @@ public class Players {
         this.name = name;
     }
 
+    public Players(Players playerName) {
+    }
+
+    public Players() {
+
+    }
+
     public String getName() {
         return name;
     }
