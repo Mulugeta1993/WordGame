@@ -1,9 +1,9 @@
+import java.util.Random;
+
 class Hosts {
-  private String name;
   private int numToGuess;
 
   public Hosts(String name, int numToGuess) {
-    this.name = name;
     this.numToGuess = numToGuess;
   }
 

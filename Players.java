@@ -1,28 +1,27 @@
-class Players {
-  private String name;
-  private int money;
+public class Players {
+    private String name;
 
-  public Players(String name) {
-      this.name = name;
-  }
+    public Players(String name) {
+        this.name = name;
+    }
 
-  public Players(String name, String lastName) {
-      this.name = name + " " + lastName;
-  }
+    public String getName() {
+        return name;
+    }
 
-  public void setMoney(int money) {
-      this.money = money;
-  }
+    public boolean makeGuess(int guess) {
+        return false;
+    }
 
-  public void addMoney(int money) {
-      this.money += money;
-  }
+    public void addMoney(int winnings) {
+        throw new UnsupportedOperationException("Unimplemented method 'addMoney'");
+    }
 
-  public int getMoney() {
-      return money;
-  }
+    public String getMoney() {
+        throw new UnsupportedOperationException("Unimplemented method 'getMoney'");
+    }
 
-  public String getName() {
-      return name;
-  }
+    public void guess() {
+        throw new UnsupportedOperationException("Unimplemented method 'guess'");
+    }
 }
