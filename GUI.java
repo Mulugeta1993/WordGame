@@ -29,7 +29,11 @@ public class GUI extends JFrame {
             hostLabel.setText("Host: " + host);
         });
         add(addHostButton);
+<<<<<<< Updated upstream
         JLabel playingPhraseLabel = new JLabel("Playing Phrase:");
+=======
+        JLabel playingPhraseLabel = new JLabel("Playing Phrase: _______________");
+>>>>>>> Stashed changes
         add(playingPhraseLabel);
         JButton startTurnButton = new JButton("Start Turns");
         startTurnButton.addActionListener(e -> {
@@ -43,4 +47,8 @@ public class GUI extends JFrame {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(GUI::new);
     }
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes
