@@ -1,4 +1,3 @@
-
-interface Award {
-    int displayWinnings(Players player, boolean correctGuess);
-  }
+public interface Award {
+  public int displayWinnings(Players player, boolean isCorrectGuess);
+}

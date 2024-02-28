@@ -1,24 +1,30 @@
-import java.util.Random;
+import java.util.Scanner;
 
-class Hosts {
-  private int numToGuess;
+public class Hosts {
+  private static Scanner scanner = new Scanner(System.in);
 
-  public Hosts(String name, int numToGuess) {
-    this.numToGuess = numToGuess;
-  }
+  public static void main(String[] args) {
+    System.out.print("Enter a phrase for the players to guess: ");
+    String phrase = scanner.nextLine();
+    Phrases phrases = new Phrases(phrase);
 
-  public void randomizeNum() {
-    Random random = new Random();
-    numToGuess = random.nextInt(10) + 1;
-  }
+    System.out.println("Playing Phrase: " + phrases.getPlayingPhrase());
 
-  public boolean checkGuess(int guess) {
-    if (guess == numToGuess) {
-      System.out.println("You won!");
-      return true;
-    } else {
-      System.out.println("You lost.");
-      return false;
+    boolean playAgain = true;
+    while (playAgain) {
+      System.out.print("Enter 'Y' to play again, or any other key to exit: ");
+      String playChoice = scanner.nextLine();
+
+      if (!playChoice.equalsIgnoreCase("Y")) {
+        playAgain = false;
+        break;
+      }
+
+      System.out.print("Enter a new phrase for the players to guess: ");
+      phrase = scanner.nextLine();
+      phrases = new Phrases(phrase);
+
+      System.out.println("Playing Phrase: " + phrases.getPlayingPhrase());
     }
   }
 }
