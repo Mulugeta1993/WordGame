@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class Turn {
+<<<<<<< Updated upstream
   public void playTurn() {
     try (Scanner scanner = new Scanner(System.in)) {
       System.out.println("Enter a letter to guess:");
@@ -15,3 +16,18 @@ public class Turn {
     }
   }
 }
+=======
+  public char getPlayerGuess() {
+    try (Scanner scanner = new Scanner(System.in)) {
+      System.out.println("Enter a letter: ");
+      char letter = scanner.next().charAt(0);
+      return letter;
+    }
+  }
+
+  public boolean takeTurn(Players players, Host host) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'takeTurn'");
+  }
+}
+>>>>>>> Stashed changes

@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import java.util.Scanner;
 
 public class Hosts {
@@ -28,3 +29,6 @@ public class Hosts {
     }
   }
 }
+=======
+
+>>>>>>> Stashed changes

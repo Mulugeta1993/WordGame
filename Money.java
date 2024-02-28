@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 class Money implements Award {
   private int winningAmount = 100;
   private int losingAmount = 50;
@@ -13,3 +14,5 @@ class Money implements Award {
   }
 
 }
+=======
+>>>>>>> Stashed changes
