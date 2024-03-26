@@ -2,77 +2,75 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.border.EmptyBorder;
 
 public class GUI extends JFrame {
+    private JPanel mainPanel;
+    private JLabel prizeLabel;
+    private JMenuBar menuBar;
+    private JMenu aboutMenu;
+    private JMenuItem attributionItem;
+    private JMenuItem imageItem;
+    private JMenuItem soundItem;
 
-        private JLabel prizeLabel;
-        private JLabel animationLabel;
-        private JMenu attributionMenu;
-        private JMenuItem imageAttributionItem;
-        private JMenuItem soundAttributionItem;
+    public GUI() {
+        setTitle("Prize Winner Game");
+        setSize(800, 600);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        public GUI() {
-                setTitle("Prize Game");
-                setSize(800, 600);
-                setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainPanel = new JPanel();
+        mainPanel.setLayout(new BorderLayout());
 
-                JMenuBar menuBar = new JMenuBar();
-                JMenu aboutMenu = new JMenu("About");
-                attributionMenu = new JMenu("Attribution");
-                imageAttributionItem = new JMenuItem("Image Attribution");
-                soundAttributionItem = new JMenuItem("Sound Attribution");
-                attributionMenu.add(imageAttributionItem);
-                attributionMenu.add(soundAttributionItem);
-                aboutMenu.add(attributionMenu);
-                menuBar.add(aboutMenu);
-                setJMenuBar(menuBar);
+        prizeLabel = new JLabel();
+        prizeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        mainPanel.add(prizeLabel, BorderLayout.CENTER);
 
-                prizeLabel = new JLabel();
-                prizeLabel.setHorizontalAlignment(SwingConstants.CENTER);
-                add(prizeLabel, BorderLayout.CENTER);
+        menuBar = new JMenuBar();
+        aboutMenu = new JMenu("About");
 
-                animationLabel = new JLabel();
-                animationLabel.setHorizontalAlignment(SwingConstants.CENTER);
-                add(animationLabel, BorderLayout.NORTH);
-                ImageIcon prizeImage = new ImageIcon("C:\\Users\\mulug\\Desktop\\assignmnet 9\\twilight.jpg");
-                ImageIcon animationImage = new ImageIcon(
-                                "C:\\Users\\mulug\\Desktop\\assignmnet 9\\animation_image.jpg");
-                Image image = prizeImage.getImage();
-                Image newPrizeImage = image.getScaledInstance(300, 300, Image.SCALE_SMOOTH);
-                prizeLabel.setIcon(new ImageIcon(newPrizeImage));
-                Timer timer = new Timer(1000, new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                                Random random = new Random();
-                                int rand = random.nextInt(10);
-                                if (rand % 2 == 0) {
-                                        animationLabel.setIcon(animationImage);
-                                        animationLabel.setVisible(true);
-                                } else {
-                                        animationLabel.setVisible(false);
-                                }
-                        }
-                });
-                timer.start();
+        attributionItem = new JMenuItem("Attribution");
+        attributionItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Display attribution for images and sounds
+                JOptionPane.showMessageDialog(null, "Images: Pixabay, Sounds: Freesound");
+            }
+        });
 
-                imageAttributionItem.addActionListener(new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                                JOptionPane.showMessageDialog(null, "twilight.jpg");
-                        }
-                });
+        imageItem = new JMenuItem("image");
+        imageItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    BufferedImage image = ImageIO.read(getClass().getResource("twilight.jpg"));
+                    prizeLabel.setIcon(new ImageIcon(image));
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
 
-                soundAttributionItem.addActionListener(new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                                JOptionPane.showMessageDialog(null, "Abraham.mp3");
-                        }
-                });
-        }
+        soundItem = new JMenuItem("Abraham.mp3");
+        soundItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            }
+        });
 
-        public static void main(String[] args) {
-                GUI gui = new GUI();
-                gui.setVisible(true);
-        }
+        aboutMenu.add(attributionItem);
+        aboutMenu.add(imageItem);
+        aboutMenu.add(soundItem);
+        menuBar.add(aboutMenu);
+
+        setJMenuBar(menuBar);
+        add(mainPanel);
+    }
+
+    public static void main(String[] args) {
+        GUI gui = new GUI();
+        gui.setVisible(true);
+    }
 }
